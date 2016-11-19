@@ -7,9 +7,7 @@ public class ChordProgression {
     int[] key = {2,4,5,7,9,11,12};
     public String generateChorus(int position) {
         String chorus= "";
-        //int[] key = {2,4,5,7,9,11,12};
-        // int x =  0 + (int)(Math.random() * 12); 
-        //+2, +2, +1, +2, +2, +2 ,+1 and repeat
+      
         for(int x = position; x< notes.length; x++)
         {
             int randstep = (int)(Math.random() * 7); 
