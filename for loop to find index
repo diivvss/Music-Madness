@@ -1,0 +1,8 @@
+int index;
+for(int x = 0; x<notes.length;x++)
+        {
+            if(notes[x].equals(a))
+            {
+                index=x;
+            }
+        }
