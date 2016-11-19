@@ -1,0 +1,179 @@
+import java.util.Scanner;
+
+public class ChordProgression {
+
+    //    public static String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G",
+    //            "G#", "A", "A#", "B" };
+
+    public static int[] scale = { 0, 2, 4, 5, 7, 9, 11 };
+
+    public static String[] chordsInKey(String key) {
+        String[] returnString = new String[6];
+        switch (key) {
+            case "C": //"C Dm Em F G Am"
+                returnString[0] = "C";
+                returnString[1] = "Dm";
+                returnString[2] = "Em";
+                returnString[3] = "F";
+                returnString[4] = "G";
+                returnString[5] = "Am";
+                break;
+            case "C#": //"C# D#m E#m F# G# A#m"
+                returnString[0] = "C#";
+                returnString[1] = "D#m";
+                returnString[2] = "E#m";
+                returnString[3] = "F#";
+                returnString[4] = "G#";
+                returnString[5] = "A#m";
+                break;
+            case "D": //"D Em F#m G A Bm"
+                returnString[0] = "D";
+                returnString[1] = "Em";
+                returnString[2] = "F#m";
+                returnString[3] = "G";
+                returnString[4] = "A";
+                returnString[5] = "Bm";
+                break;
+            case "Eb": //"Eb Fm Gm Ab Bb Cm"
+                returnString[0] = "Eb";
+                returnString[1] = "Fm";
+                returnString[2] = "Gm";
+                returnString[3] = "Ab";
+                returnString[4] = "Bb";
+                returnString[5] = "Cm";
+                break;
+            case "E": //"E F#m G#m A B C#m"
+                returnString[0] = "E";
+                returnString[1] = "F#m";
+                returnString[2] = "G#m";
+                returnString[3] = "A";
+                returnString[4] = "B";
+                returnString[5] = "C#m";
+                break;
+            case "F": //"F Gm Am Bb C Dm"
+                returnString[0] = "F";
+                returnString[1] = "Gm";
+                returnString[2] = "Am";
+                returnString[3] = "Bb";
+                returnString[4] = "C";
+                returnString[5] = "Dm";
+                break;
+            case "F#": //"F# G#m A#m B C# D#m"
+                returnString[0] = "F#";
+                returnString[1] = "G#m";
+                returnString[2] = "A#m";
+                returnString[3] = "B";
+                returnString[4] = "C#";
+                returnString[5] = "D#m";
+                break;
+            case "G": //"G Am Bm C D Em"
+                returnString[0] = "G";
+                returnString[1] = "Am";
+                returnString[2] = "Bm";
+                returnString[3] = "C";
+                returnString[4] = "D";
+                returnString[5] = "Em";
+                break;
+            case "Ab": //"Ab Bbm Cm Db Eb Fm"
+                returnString[0] = "Ab";
+                returnString[1] = "Bbm";
+                returnString[2] = "Cm";
+                returnString[3] = "Db";
+                returnString[4] = "Eb";
+                returnString[5] = "Fm";
+                break;
+            case "A": //"A Bm C#m D E F#"
+                returnString[0] = "A";
+                returnString[1] = "Bm";
+                returnString[2] = "C#m";
+                returnString[3] = "D";
+                returnString[4] = "E";
+                returnString[5] = "F#";
+                break;
+            case "Bb": //"Bb Cm Dm Eb F Gm"
+                returnString[0] = "Bb";
+                returnString[1] = "Cm";
+                returnString[2] = "Dm";
+                returnString[3] = "Eb";
+                returnString[4] = "F";
+                returnString[5] = "Gm";
+                break;
+            case "B": //"B C#m D#m E F# G#m"
+                returnString[0] = "B";
+                returnString[1] = "C#m";
+                returnString[2] = "D#m";
+                returnString[3] = "E";
+                returnString[4] = "F#";
+                returnString[5] = "G#m";
+                break;
+            default:
+                System.out.print("Something bad is about to happen.");
+                break;
+
+        }
+
+        return returnString;
+    }
+
+    public static String[] generateChorus(String[] notes) {
+
+        String chorus[] = new String[4];
+
+        int count[] = { 0, 0, 0, 0, 0, 0 };
+
+        for (int i = 0; i < chorus.length; i++) {
+
+            int r = (int) (Math.random() * notes.length);
+
+            while (count[r] > 2) {
+
+                r = (int) (Math.random() * notes.length);
+
+            }
+
+            chorus[i] = notes[r];
+
+            count[r]++;
+
+        }
+
+        return chorus;
+    }
+
+    public static void generateSong(String key) {
+
+        String notes[] = chordsInKey(key);
+
+        String chorus[] = generateChorus(notes);
+
+        String v1[] = generateVerse(notes);
+
+        String v2[] = generateVerse(notes);
+
+    }
+
+    public static void runProgram() {
+
+        System.out.println("Pick a key for your song: ");
+
+        Scanner input = new Scanner(System.in);
+
+        String key = input.nextLine();
+        
+        generateSong(key);
+
+        input.close();
+    }
+
+    public static String[] generateVerse(String[] notes) {
+        //generates string with verse chords
+        return null;
+    }
+
+    public static void main(String[] args) {
+
+        runProgram();
+
+    }
+
+}
