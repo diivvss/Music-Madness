@@ -429,6 +429,7 @@ public class ChordProgression {
     public static void printSong(String[] chorus, String[][] verses,
             String[] bridge) {
         //print chorus
+
         System.out.println("CHORUS: ");
         for (int i = 0; i < chorus.length; i++) {
 
@@ -472,16 +473,12 @@ public class ChordProgression {
 
         String key = in.nextLine();
 
-        if (!(contains(arrayMajors, key) || contains(arrayMinors, key))) {
+        while (!contains(arrayMajors, key) && !contains(arrayMinors, key)) {
 
-            while (!contains(arrayMajors, key)) {
+            System.out.print(
+                    "NOPE! Enter a valid key that the output song will be in: ");
 
-                System.out.print(
-                        "NOPE! Enter a valid key that the output song will be in: ");
-
-                key = in.nextLine();
-
-            }
+            key = in.nextLine();
 
         }
 
