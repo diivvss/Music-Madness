@@ -435,6 +435,7 @@ public class ChordProgression {
             System.out.print(chorus[i] + " ");
 
         }
+        System.out.println("");
 
         System.out.println("VERSES: ");
         for (int i = 0; i < verses.length; i++) {
@@ -443,9 +444,10 @@ public class ChordProgression {
 
             for (int j = 0; j < verses[i].length; j++) {
 
-                System.out.println(verses[i][j] + " ");
+                System.out.print(verses[i][j] + " ");
 
             }
+            System.out.println("");
 
         }
 
@@ -453,7 +455,7 @@ public class ChordProgression {
 
         for (int i = 0; i < bridge.length; i++) {
 
-            System.out.println(bridge[i] + " ");
+            System.out.print(bridge[i] + " ");
 
         }
 
@@ -510,11 +512,6 @@ public class ChordProgression {
 
         //construct the chorus given the array from above
         String[] chorus = generateChorusOrVerse(chords, chorusLength);
-
-        //generate 3 different verses using the chorus
-
-        //        String[] verse = generateChorusOrVerse(chorus);
-        //        String[] verse2 = generateChorusOrVerse(chorus);
 
         String[][] verses = new String[numVerses][chorusLength];
 
