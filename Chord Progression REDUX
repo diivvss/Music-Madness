@@ -153,26 +153,26 @@ public class ChordProgression {
 
     }
 
-    //generation of a bridge given a verse
-    public static String[] generateBridge(String[] chordsInChorus,
-            String[] chords) {
+     public static String[] generateBridge(String[] chordsInChorus,
+    String[] chords) {
 
         int temp = (int) (Math.random() * 6);
 
-        String[] bridge = new String[3];
+        String[] bridge= new String[3];
 
         int enterIndex = 0;
-
-        for (int i = 0; i < chords.length; i++) {
-
+        int i = 0;
+        while(enterIndex<2)
+        {
             if (!contains(chordsInChorus, chords[i])) {
 
                 bridge[enterIndex] = chords[i];
 
                 enterIndex++;
             }
+            i++;	
         }
-        bridge[enterIndex] = chords[temp];
+        bridge[enterIndex++] = chords[temp];
         return bridge;
     }
 
