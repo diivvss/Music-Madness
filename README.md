@@ -12,5 +12,6 @@
 ##Android Application
   
   -Android port available!
-  <br>
+  
   -Install to your device with the given .apk 
+
