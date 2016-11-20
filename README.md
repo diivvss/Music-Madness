@@ -15,5 +15,5 @@
   
   -Android port available!
   
-  -Install to your device with the given "functioningAPK.apk"
+  -Install to your device with the given ChordProgression.apk
 
