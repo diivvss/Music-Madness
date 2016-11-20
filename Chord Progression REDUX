@@ -163,7 +163,7 @@ public class ChordProgression {
 
         int enterIndex = 0;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < chords.length; i++) {
 
             if (!contains(chordsInChorus, chords[i])) {
 
