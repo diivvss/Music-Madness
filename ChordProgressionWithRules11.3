@@ -345,17 +345,35 @@ public class ChordProgression {
 
             if (prevChord.equals(chordsInKey[1])) {
 
-                int rand = (int) (Math.random() * 2) + 1;
+                int rand = (int) (Math.random() * 2 + 1);
 
-                chorus[i] = (rand == 1) ? chordsInKey[4] : chordsInKey[6];
+                if (rand == 1) {
+
+                    chorus[i] = chordsInKey[4];
+
+                } else {
+
+                    chorus[i] = chordsInKey[6];
+
+                }
+
+                //                chorus[i] = (rand == 1) ? chordsInKey[4] : chordsInKey[6];
 
             }
 
             if (prevChord.equals(chordsInKey[2])) {
 
-                int rand = (int) (Math.random() * 2) + 1;
+                int rand = (int) (Math.random() * 2 + 1);
 
-                chorus[i] = (rand == 1) ? chordsInKey[3] : chordsInKey[5];
+                if (rand == 1) {
+
+                    chorus[i] = chordsInKey[3];
+
+                } else {
+
+                    chorus[i] = chordsInKey[5];
+
+                }
 
             }
 
@@ -387,7 +405,7 @@ public class ChordProgression {
 
             if (prevChord.equals(chordsInKey[5])) {
 
-                chorus[i] = chordsInKey[(int) (Math.random() * 4) + 1];
+                chorus[i] = chordsInKey[(int) (Math.random() * 4 + 1)];
 
             }
 
@@ -490,8 +508,10 @@ public class ChordProgression {
         //construct the chorus given the array from above
         String[] chorus = generateChorusOrVerse(chords);
         //generate 3 different verses using the chorus
-        String[] verse = generateChorusOrVerse(chorus);
-        String[] verse2 = generateChorusOrVerse(chorus);
+
+        String[] verse = generateChorusOrVerse(chords);
+        String[] verse2 = generateChorusOrVerse(chords);
+
         //generate a bridge using a rendition of the verse
         String[] bridge = generateBridge(chorus, chords);
         //printing method using a rendition of parsing
