@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ChordProgression {
+public class SongGenerator1 {
 
     //representation of valid inputs
     final static String[] arrayMajors = { "C", "C#", "Db", "D", "Eb", "E", "F",
@@ -393,7 +393,7 @@ public class ChordProgression {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter a valid key that the output song will be in: ");
         String key = in.nextLine();
-        if (!contains(arrayMajors, key)) {
+        if (!(contains(arrayMajors, key) || contains(arrayMinors, key))) {
             while (!contains(arrayMajors, key)) {
                 System.out.print(
                         "NOPE! Enter a valid key that the output song will be in: ");
