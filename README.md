@@ -2,11 +2,14 @@
 
 #Chord Progression/Song Generator
 
-##ChordProgression.jar
+##ChordProgression.jar version
   
   -executable from command line "(java.exe location) -jar (ChordProgression.jar location)"
   
   -asks the user for the key they want the generated song in, prints out resulting song's chords
   
   <br>
-Android app in development...
+##Android Application
+  
+  -Android port available!
+  -Install to your device with the given .apk 
