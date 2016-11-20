@@ -413,12 +413,12 @@ public class ChordProgression {
 
         for (int i = 0; enterIndex < newSize - 2; i++) {
 
-            if (!contains(chordsInChorus, chords[i])) {
+            //            if (!contains(chordsInChorus, chords[i])) {
 
-                bridge[enterIndex] = chords[i];
+            bridge[enterIndex] = chords[i];
 
-                enterIndex++;
-            }
+            enterIndex++;
+            //            }
 
         }
         bridge[enterIndex++] = chords[temp];
@@ -439,11 +439,11 @@ public class ChordProgression {
         System.out.println("VERSES: ");
         for (int i = 0; i < verses.length; i++) {
 
-            System.out.println("VERSE " + i + ": ");
+            System.out.println("VERSE " + (i + 1) + ": ");
 
             for (int j = 0; j < verses[i].length; j++) {
 
-                System.out.println(chorus[j] + " ");
+                System.out.println(verses[i][j] + " ");
 
             }
 
