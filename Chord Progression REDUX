@@ -1,12 +1,24 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ChordProgression {
 
-    //    public static String[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G",
-    //            "G#", "A", "A#", "B" };
+    //representation of valid inputs
+    final static String[] arrayMajors = { "C", "C#", "D", "Eb", "E", "F", "F#",
+            "G", "Ab", "A", "Bb", "B" };
 
-    public static int[] scale = { 0, 2, 4, 5, 7, 9, 11 };
+    //contains method for an array
+    public static boolean contains(String[] array, String input) {
+        boolean check = false;
+        for (int i = 0; i < array.length && check == false; i++) {
+            if (input.equals(array[i])) {
+                check = true;
+            }
+        }
+        return check;
+    }
 
+    //generation of chords in a particular key
     public static String[] chordsInKey(String key) {
         String[] returnString = new String[6];
         switch (key) {
@@ -115,64 +127,129 @@ public class ChordProgression {
         return returnString;
     }
 
-    public static String[] generateChorus(String[] notes) {
+    //returns a chorus
+    public static String[] generateChorusOrVerse(String[] chordsInKey) {
+        String[] chorus = new String[4];
 
-        String chorus[] = new String[4];
+        int[] elements = { 0, 0, 0, 0, 0, 0 };
 
-        int count[] = { 0, 0, 0, 0, 0, 0 };
+        for (int i = 0; i < 4; i++) {
 
-        for (int i = 0; i < chorus.length; i++) {
+            int temp = (int) (Math.random() * chordsInKey.length);
 
-            int r = (int) (Math.random() * notes.length);
+            while (elements[temp] >= 2) {
 
-            while (count[r] > 2) {
-
-                r = (int) (Math.random() * notes.length);
+                temp = (int) (Math.random() * chordsInKey.length);
 
             }
 
-            chorus[i] = notes[r];
+            chorus[i] = chordsInKey[temp];
 
-            count[r]++;
+            elements[temp]++;
 
         }
 
         return chorus;
-    }
-
-    public static void generateSong(String key) {
-
-        String notes[] = chordsInKey(key);
-
-        String chorus[] = generateChorus(notes);
-
-        String v1[] = generateVerse(notes);
-
-        String v2[] = generateVerse(notes);
 
     }
 
-    public static void runProgram() {
+    //generation of a bridge given a verse
+    public static String[] generateBridge(String[] chordsInChorus,
+            String[] chords) {
 
-        System.out.println("Pick a key for your song: ");
+        int temp = (int) (Math.random() * 6);
 
-        Scanner input = new Scanner(System.in);
+        String[] bridge = new String[3];
 
-        String key = input.nextLine();
-        
-        generateSong(key);
+        int enterIndex = 0;
 
-        input.close();
+        for (int i = 0; i < 4; i++) {
+
+            if (!contains(chordsInChorus, chords[i])) {
+
+                bridge[enterIndex] = chords[i];
+
+                enterIndex++;
+            }
+        }
+        bridge[enterIndex] = chords[temp];
+        return bridge;
     }
 
-    public static String[] generateVerse(String[] notes) {
-        //generates string with verse chords
-        return null;
+    //prints the song to the console
+    public static void printSong(String[] chorus, String[] verse,
+            String[] verse2, String[] bridge) {
+        //print chorus
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+        System.out.println("");
+        //print first verse
+        System.out.println("VERSE 1: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(verse[i] + " ");
+        }
+        System.out.println("");
+        //print chorus again
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+        System.out.println("");
+        //print second verse
+        System.out.println("VERSE 2: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(verse2[i] + " ");
+        }
+        System.out.println("");
+        //print the bridge
+        System.out.println("BRIDGE: ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(bridge[i] + " ");
+        }
+        System.out.println("");
+        //print the chorus for the last time
+        //print chorus again
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+
     }
 
-    public static void main(String[] args) {
+    //prints the song to a file/method
 
-        runProgram();
+    public static void main(String[] args) throws IOException {
+
+        //Read in the value that will check the key of the song
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter a valid key that the output song will be in: ");
+        String key = in.nextLine();
+        if (!contains(arrayMajors, key)) {
+            while (!contains(arrayMajors, key)) {
+                System.out.print(
+                        "NOPE! Enter a valid key that the output song will be in: ");
+                key = in.nextLine();
+            }
+        }
+
+        //switch case that constructs a smaller string of notes for the corresponding
+        //notes (1st through 7th)
+        String[] chords = chordsInKey(key);
+
+        //construct the chorus given the array from above
+        String[] chorus = generateChorusOrVerse(chords);
+        //generate 3 different verses using the chorus
+        String[] verse = generateChorusOrVerse(chorus);
+        String[] verse2 = generateChorusOrVerse(chorus);
+        //generate a bridge using a rendition of the verse
+        String[] bridge = generateBridge(chorus, chords);
+        //printing method using a rendition of parsing
+        printSong(chorus, verse, verse2, bridge);
+
+        in.close();
 
     }
 
