@@ -1,0 +1,422 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class ChordProgression {
+
+    //representation of valid inputs
+    final static String[] arrayMajors = { "C", "C#", "Db", "D", "Eb", "E", "F",
+            "F#", "Gb", "G", "Ab", "A", "Bb", "B" };
+
+    final static String[] arrayMinors = { "Cm", "C#m", "Dm", "D#m", "Ebm", "Em",
+            "Fm", "F#m", "Gm", "G#m", "Abm", "Am", "A#m", "Bbm", "Bm" };
+
+    //contains method for an array
+    public static boolean contains(String[] array, String input) {
+        boolean check = false;
+        for (int i = 0; i < array.length && check == false; i++) {
+            if (input.equals(array[i])) {
+                check = true;
+            }
+        }
+        return check;
+    }
+
+    //generation of chords in a particular key
+    public static String[] chordsInKey(String key) {
+        String[] returnString = new String[7];
+        switch (key) {
+            case "C":
+                returnString[0] = "C";
+                returnString[1] = "Dm";
+                returnString[2] = "Em";
+                returnString[3] = "F";
+                returnString[4] = "G";
+                returnString[5] = "Am";
+                returnString[6] = "Bdim";
+                break;
+            case "C#":
+                returnString[0] = "C#";
+                returnString[1] = "D#m";
+                returnString[2] = "E#m";
+                returnString[3] = "F#";
+                returnString[4] = "G#";
+                returnString[5] = "A#m";
+                returnString[6] = "B#dim";
+                break;
+            case "Cm":
+                returnString[0] = "Cm";
+                returnString[1] = "Ddim";
+                returnString[2] = "Eb";
+                returnString[3] = "Fm";
+                returnString[4] = "Gm";
+                returnString[5] = "Ab";
+                returnString[6] = "Bb";
+                break;
+            case "C#m":
+                returnString[0] = "C#m";
+                returnString[1] = "D#dim";
+                returnString[2] = "E";
+                returnString[3] = "F#m";
+                returnString[4] = "G#m";
+                returnString[5] = "A";
+                returnString[6] = "B";
+                break;
+            case "Db":
+                returnString[0] = "Db";
+                returnString[1] = "Ebm";
+                returnString[2] = "Fm";
+                returnString[3] = "Gb";
+                returnString[4] = "Ab";
+                returnString[5] = "Bbm";
+                returnString[6] = "Cdim";
+                break;
+            case "D":
+                returnString[0] = "D";
+                returnString[1] = "Em";
+                returnString[2] = "F#m";
+                returnString[3] = "G";
+                returnString[4] = "A";
+                returnString[5] = "Bm";
+                returnString[6] = "C#dim";
+                break;
+            case "Dm":
+                returnString[0] = "Dm";
+                returnString[1] = "Edim";
+                returnString[2] = "F";
+                returnString[3] = "Gm";
+                returnString[4] = "Am";
+                returnString[5] = "Bb";
+                returnString[6] = "C";
+                break;
+            case "D#m":
+                returnString[0] = "D#m";
+                returnString[1] = "E#dim";
+                returnString[2] = "F#";
+                returnString[3] = "G#m";
+                returnString[4] = "A#m";
+                returnString[5] = "B";
+                returnString[6] = "C#";
+                break;
+            case "Eb":
+                returnString[0] = "Eb";
+                returnString[1] = "Fm";
+                returnString[2] = "Gm";
+                returnString[3] = "Ab";
+                returnString[4] = "Bb";
+                returnString[5] = "Cm";
+                returnString[6] = "Ddim";
+                break;
+            case "E":
+                returnString[0] = "E";
+                returnString[1] = "F#m";
+                returnString[2] = "G#m";
+                returnString[3] = "A";
+                returnString[4] = "B";
+                returnString[5] = "C#m";
+                returnString[6] = "D#dim";
+                break;
+            case "Ebm":
+                returnString[0] = "Ebm";
+                returnString[1] = "Fdim";
+                returnString[2] = "Gb";
+                returnString[3] = "Abm";
+                returnString[4] = "Bbm";
+                returnString[5] = "Cb";
+                returnString[6] = "Db";
+                break;
+            case "Em":
+                returnString[0] = "Em";
+                returnString[1] = "F#dim";
+                returnString[2] = "G";
+                returnString[3] = "Am";
+                returnString[4] = "Bm";
+                returnString[5] = "C";
+                returnString[6] = "D";
+                break;
+            case "F":
+                returnString[0] = "F";
+                returnString[1] = "Gm";
+                returnString[2] = "Am";
+                returnString[3] = "Bb";
+                returnString[4] = "C";
+                returnString[5] = "Dm";
+                returnString[6] = "Edim";
+                break;
+            case "F#":
+                returnString[0] = "F#";
+                returnString[1] = "G#m";
+                returnString[2] = "A#m";
+                returnString[3] = "B";
+                returnString[4] = "C#";
+                returnString[5] = "D#m";
+                returnString[6] = "E#dim";
+                break;
+            case "Fm":
+                returnString[0] = "Fm";
+                returnString[1] = "Gdim";
+                returnString[2] = "Ab";
+                returnString[3] = "Bbm";
+                returnString[4] = "Cm";
+                returnString[5] = "Db";
+                returnString[6] = "Eb";
+                break;
+            case "F#m":
+                returnString[0] = "F#m";
+                returnString[1] = "G#dim";
+                returnString[2] = "A";
+                returnString[3] = "Bm";
+                returnString[4] = "C#m";
+                returnString[5] = "D";
+                returnString[6] = "E";
+                break;
+            case "Gb":
+                returnString[0] = "Gb";
+                returnString[1] = "Abm";
+                returnString[2] = "Bbm";
+                returnString[3] = "Cb";
+                returnString[4] = "Db";
+                returnString[5] = "Ebm";
+                returnString[6] = "Fdim";
+                break;
+            case "G":
+                returnString[0] = "G";
+                returnString[1] = "Am";
+                returnString[2] = "Bm";
+                returnString[3] = "C";
+                returnString[4] = "D";
+                returnString[5] = "Em";
+                returnString[6] = "F#dim";
+                break;
+            case "Gm":
+                returnString[0] = "Gm";
+                returnString[1] = "Adim";
+                returnString[2] = "Bb";
+                returnString[3] = "Cm";
+                returnString[4] = "Dm";
+                returnString[5] = "Eb";
+                returnString[6] = "F";
+                break;
+            case "G#m":
+                returnString[0] = "G#m";
+                returnString[1] = "A#dim";
+                returnString[2] = "B";
+                returnString[3] = "C#m";
+                returnString[4] = "D#m";
+                returnString[5] = "E";
+                returnString[6] = "F#";
+                break;
+            case "Ab":
+                returnString[0] = "Ab";
+                returnString[1] = "Bbm";
+                returnString[2] = "Cm";
+                returnString[3] = "Db";
+                returnString[4] = "Eb";
+                returnString[5] = "Fm";
+                returnString[6] = "Gdim";
+                break;
+            case "Abm":
+                returnString[0] = "Abm";
+                returnString[1] = "Bbdim";
+                returnString[2] = "Cb";
+                returnString[3] = "Dbm";
+                returnString[4] = "Ebm";
+                returnString[5] = "Fb";
+                returnString[6] = "Gb";
+                break;
+            case "A":
+                returnString[0] = "A";
+                returnString[1] = "Bm";
+                returnString[2] = "C#m";
+                returnString[3] = "D";
+                returnString[4] = "E";
+                returnString[5] = "F#";
+                returnString[6] = "G#dim";
+                break;
+            case "Am":
+                returnString[0] = "Am";
+                returnString[1] = "Bdim";
+                returnString[2] = "C";
+                returnString[3] = "Dm";
+                returnString[4] = "Em";
+                returnString[5] = "F";
+                returnString[6] = "G";
+                break;
+            case "A#m":
+                returnString[0] = "A#m";
+                returnString[1] = "B#dim";
+                returnString[2] = "C#";
+                returnString[3] = "D#m";
+                returnString[4] = "E#m";
+                returnString[5] = "F#";
+                returnString[6] = "G#";
+                break;
+            case "Bb":
+                returnString[0] = "Bb";
+                returnString[1] = "Cm";
+                returnString[2] = "Dm";
+                returnString[3] = "Eb";
+                returnString[4] = "F";
+                returnString[5] = "Gm";
+                returnString[6] = "Adim";
+                break;
+            case "Bbm":
+                returnString[0] = "Bbm";
+                returnString[1] = "Cdim";
+                returnString[2] = "Db";
+                returnString[3] = "Ebm";
+                returnString[4] = "Fm";
+                returnString[5] = "Gb";
+                returnString[6] = "Ab";
+                break;
+            case "B":
+                returnString[0] = "B";
+                returnString[1] = "C#m";
+                returnString[2] = "D#m";
+                returnString[3] = "E";
+                returnString[4] = "F#";
+                returnString[5] = "G#m";
+                returnString[6] = "A#dim";
+                break;
+            case "Bm":
+                returnString[0] = "Bm";
+                returnString[1] = "C#dim";
+                returnString[2] = "D";
+                returnString[3] = "Em";
+                returnString[4] = "F#m";
+                returnString[5] = "G";
+                returnString[6] = "A";
+                break;
+            default:
+                //unused
+                break;
+
+        }
+
+        return returnString;
+    }
+
+    //returns a chorus
+    public static String[] generateChorusOrVerse(String[] chordsInKey) {
+        String[] chorus = new String[4];
+
+        int[] elements = { 0, 0, 0, 0, 0, 0, 0 };
+
+        for (int i = 0; i < 4; i++) {
+
+            int temp = (int) (Math.random() * chordsInKey.length);
+
+            while (elements[temp] >= 2) {
+
+                temp = (int) (Math.random() * chordsInKey.length);
+
+            }
+
+            chorus[i] = chordsInKey[temp];
+
+            elements[temp]++;
+
+        }
+
+        return chorus;
+
+    }
+
+    public static String[] generateBridge(String[] chordsInChorus,
+            String[] chords) {
+
+        int temp = (int) (Math.random() * 7);
+
+        String[] bridge = new String[3];
+
+        int enterIndex = 0;
+        int i = 0;
+        while (enterIndex < 2) {
+            if (!contains(chordsInChorus, chords[i])) {
+
+                bridge[enterIndex] = chords[i];
+
+                enterIndex++;
+            }
+            i++;
+        }
+        bridge[enterIndex++] = chords[temp];
+        return bridge;
+    }
+
+    //prints the song to the console
+    public static void printSong(String[] chorus, String[] verse,
+            String[] verse2, String[] bridge) {
+        //print chorus
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+        System.out.println("");
+        //print first verse
+        System.out.println("VERSE 1: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(verse[i] + " ");
+        }
+        System.out.println("");
+        //print chorus again
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+        System.out.println("");
+        //print second verse
+        System.out.println("VERSE 2: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(verse2[i] + " ");
+        }
+        System.out.println("");
+        //print the bridge
+        System.out.println("BRIDGE: ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(bridge[i] + " ");
+        }
+        System.out.println("");
+        //print the chorus for the last time
+        //print chorus again
+        System.out.println("CHORUS: ");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(chorus[i] + " ");
+        }
+
+    }
+
+    //prints the song to a file/method
+
+    public static void main(String[] args) throws IOException {
+
+        //Read in the value that will check the key of the song
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter a valid key that the output song will be in: ");
+        String key = in.nextLine();
+        if (!contains(arrayMajors, key)) {
+            while (!contains(arrayMajors, key)) {
+                System.out.print(
+                        "NOPE! Enter a valid key that the output song will be in: ");
+                key = in.nextLine();
+            }
+        }
+
+        //switch case that constructs a smaller string of notes for the corresponding
+        //notes (1st through 7th)
+        String[] chords = chordsInKey(key);
+
+        //construct the chorus given the array from above
+        String[] chorus = generateChorusOrVerse(chords);
+        //generate 3 different verses using the chorus
+        String[] verse = generateChorusOrVerse(chorus);
+        String[] verse2 = generateChorusOrVerse(chorus);
+        //generate a bridge using a rendition of the verse
+        String[] bridge = generateBridge(chorus, chords);
+        //printing method using a rendition of parsing
+        printSong(chorus, verse, verse2, bridge);
+
+        in.close();
+
+    }
+
+}
