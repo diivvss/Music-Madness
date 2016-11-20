@@ -523,6 +523,9 @@ public class ChordProgression {
 
         //generate a bridge using a rendition of the verse
         String[] bridge = generateChorusOrVerse(chords, chorusLength - 1); //bridge length is 1 less than verse/chorus
+        while (bridge[0] == chorus[0]){
+        	bridge = generateChorusOrVerse(chords, chorusLength - 1);
+        }
         //printing method using a rendition of parsing
         printSong(chorus, verses, bridge);
 
@@ -531,4 +534,3 @@ public class ChordProgression {
     }
 
 }
-
