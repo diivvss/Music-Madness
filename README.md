@@ -2,7 +2,9 @@
 
 Project for OHI/O Hackathon 2016
 
--asks the user for the key they want the generated song in, prints out resulting Chorus, Verses, and Bridge Chords (as text)
+This program asks the user for a key, number of chords (per chorus), and number of verses to generate a song. The chords for a chorus, a bridge, and verses are printed out as text. Chords are randomly selected, with restrictions to account for music theory rules - Ex. a preceding chord may change the next possible chord possibilities in the sequence.
+
+
 
 ##ChordProgression.jar
   
