@@ -13,11 +13,9 @@ Project for OHI/O Hackathon 2016
   <br>
 ##ChordProgression.apk
   
-  -Android port available
+  -Android port available, Download and install to your device with the given .apk
   
-  -Install to your device with the given ChordProgression.apk
-  
-  -Because the apk is currently unsigned, application installs from external sources must be enabled on your device
+  -Because the .apk is currently unsigned, application installs from external sources must be enabled on your device
   
   -Note: Early development version - error checking improvements coming
   
